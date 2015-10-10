@@ -1,0 +1,33 @@
+<?php
+require_once '..\Lib\U.php';
+echo "Saisir NOM"."\n";
+$NOM = lireClavier();
+echo "Saisir Prénom"."\n";
+$Pnom = lireClavier();
+
+
+ltrim($NOM);
+rtrim($NOM);
+ltrim($Pnom);
+rtrim($Pnom);
+
+$Pnom = strtolower($Pnom);
+$Pnom[0]= strtoupper($Pnom[0]);
+/*
+$positionDuTiret = strpos($Pnom, '-');
+$Pnom[$positionDuTiret+1] = strtoupper($positionDuTiret+1);
+ */
+
+       
+for ($i=1 ; $i < strlen($Pnom); $i++){
+    if($Pnom[$i] == '-'){
+        $Pnom[$i+1]=strtoupper($Pnom[$i+1]);
+    }
+    //else{}
+}
+$NOM = strtoupper($NOM);
+echo ('>'.$NOM.'<'."\n");
+echo ('>'.$Pnom.'<'."\n");
+
+
+?>
