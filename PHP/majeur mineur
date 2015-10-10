@@ -1,0 +1,13 @@
+<?php
+if($argc == 2){
+    if($argv[1] <18){
+        echo 'Vous êtes mineur(e)';
+    }
+    else {
+        echo 'vous êtes majeur(e)';
+    }
+}
+else {
+    echo 'Les arguments ne correspondent pas';
+}
+?>
