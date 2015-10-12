@@ -1,0 +1,11 @@
+<?php
+$str = "ezff";
+$str2 = "laval";
+echo palindrome ($str). "\n";
+echo palindrome ($str2). "\n";
+
+function palindrome($string) {
+    $x = ($string == strrev($string));
+    return $x;
+}
+?>
