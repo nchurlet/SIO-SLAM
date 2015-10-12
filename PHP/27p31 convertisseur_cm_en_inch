@@ -1,0 +1,23 @@
+<?php
+
+//nombre à convertir
+$index = 152.31;
+$inch = 2.54;
+
+echo "Pour 1cm = " . $inch . " inch" . "\n" . $index . " cm.";
+echo Convertir_en_inch($index) . "inch" . "\n";
+
+function Convertir_en_inch($reel) {
+//constantes en paramètres
+    $inch = 2.54;
+    //oppération
+    $res = ($reel / $inch);
+    return $res;
+}
+/*
+"C:\xampp\php\php.exe" "C:\Users\uSio\Desktop\tp_PHP\tp_1\Exos\27p31 convertisseur_cm_en_inch.php"
+Pour 1cm = 2.54 inch
+152.31 cm.59.964566929134inch
+Done.
+*/
+?>
