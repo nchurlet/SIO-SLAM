@@ -1,0 +1,30 @@
+<?php
+
+$str = "jEan-pIERRE-mArie-xAVier";
+
+echo strCapNom($str);
+
+function strCapNom($str) {
+    $prem = strtoupper($str[0]);
+    if (strlen($str) > 1) {
+        $resteStr = strtolower(substr($str, 1));
+        if (strpos($resteStr, "-")) {
+            for ($i = 1; $i <= strlen($resteStr) - 1; $i++) {
+                if ($resteStr[$i] == "-") {
+                    $resteStr[$i + 1] = strtoupper($resteStr[$i + 1]);
+                }
+            }
+        }
+    } else {
+        $resteStr = "";
+    }
+    $str = $prem . $resteStr;
+    return $str;
+}
+
+/* res
+ * "C:\xampp\php\php.exe" "C:\Users\uSio\Desktop\tp_PHP\tp_1\Exos\25p31 Fonction_strCap-Nom.php"
+  Jean-Pierre-Marie-Xavier
+  Done.
+ */
+?>
