@@ -1,4 +1,4 @@
- <?php
+ <?php //ATTENTION !!! la méthode utilisée ici fonctionne pour le moment sur php mais elle n'est pas dans les bonnes procédures
 require_once '..\Lib\U.php';
 echo "Saisir le nombre de jours roulés". "\n";
 $jours = lireClavier();
@@ -10,26 +10,22 @@ $ch = lireClavier();
 $prix = 0;
 
 //Constantes en paramètres
-$forfait = 50;
-$kmOfferts = 50;
-$kmMajorés = 450;
-$fact_km = 0.2;
-$fact_km_maj = 0.25;
-$majCh = 10;
+$forfait = 50;      $kmOfferts = 50;    $fact_km = 0.2;
+$Ch_Maj = 10;        $kmMajorés = 450;   $fact_km_maj = 0.25;
 $majForfait = 0.1;
 
 $prix = ($jours * $forfait) //forfait journalier $test0
-        + (($ch > $majCh) * $jours * $forfait * $majForfait) //majoration si ch>$majCh $test1
-        + (($km > $kmOfferts) *  ($km < $kmMajorés) * ($km-$kmOfferts) * $fact_km) //facturation des km entre 50 et 500 $test2
+        + (($ch > $Ch_Maj) * $jours * $forfait * $majForfait) //majoration si ch>$Ch_Maj $test1
+        + (($km > $kmOfferts) *  ($km < $kmMajorés) * ($km - $kmOfferts) * $fact_km) //facturation des km entre 50 et 500 $test2
         + (($km > $kmMajorés) * (($kmMajorés * $fact_km) + (($km - $kmOfferts - $kmMajorés) * $fact_km_maj))); //facturation des km compte tenu de la majoration $test2b
 
-
+  
 echo "Prix facturé : " . $prix . "\n";
 
 //Tests
 $test0 = ($jours * $forfait);
-$test1 = (($ch > $majCh) * $jours * $forfait * $majForfait);
-$conditionTest1 = ($ch > $majCh) *1;
+$test1 = (($ch > $Ch_Maj) * $jours * $forfait * $majForfait);
+$conditionTest1 = ($ch > $Ch_Maj) *1;
 $test2 = (($km > $kmOfferts) *  ($km < $kmMajorés) * ($km-$kmOfferts) * $fact_km);
 $conditionTest2 = ($km > $kmOfferts) *  ($km < $kmMajorés);
 $test2b = (($km > $kmMajorés) * (($kmMajorés * $fact_km) + (($km - $kmOfferts - $kmMajorés) * $fact_km_maj)));
@@ -42,6 +38,7 @@ echo "Prix du forfait test0 : ". $test0 . "\n" .
         "Condition test2 : " . $conditionTest2 . " Facturation1 des km test2 : " .$test2. "\n" .
         "Condition test2b : " . $conditionTest2b ." Facturation 2 des km test2b : ". $test2b. "\n";
 echo "Somme des test : " . ($test0 + $test1 + $test2 + $test2b) . "\n";
+
 
 /* 
 Exemple de résultats : 
@@ -58,5 +55,4 @@ Condition test2 : 1 Facturation1 des km test2 : 14
 Condition test2b : 0 Facturation 2 des km test2b : -0
 Somme des test : 179
 */
-
 ?>
