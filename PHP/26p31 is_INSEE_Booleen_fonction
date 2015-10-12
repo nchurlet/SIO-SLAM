@@ -1,0 +1,26 @@
+<?php
+$NoInsee    = "1780975123111";
+$NoInsee2   = "3780975123111";
+
+echo is_INSEE($NoInsee). "\n";
+echo is_INSEE($NoInsee2) . "\n";
+
+function is_INSEE ($str) {
+    if(($str[0] == '1' || $str[0] == '2') && strlen($str) == 13 ) {
+        return TRUE;
+    }
+    else {
+        return FALSE;
+    }
+}
+
+/*
+$NoInsee    = "1780975123111";
+$NoInsee2   = "3780975123111";
+ * Résultat
+"C:\xampp\php\php.exe" "C:\Users\uSio\Desktop\tp_PHP\tp_1\Exos\26p31 is_INSEE_Booleen_fonction.php"
+1
+
+Done.
+*/
+?>
