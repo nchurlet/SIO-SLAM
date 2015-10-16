@@ -1,0 +1,113 @@
+<?php
+
+require_once '..\\Lib\U.php';
+
+
+echo "nombre de pots de miel : \n";
+$qtéPotsDeMiel = lireClavier();
+echo "nombre de produits dérivés : \n";
+$qtéProduitsDérivés = lireClavier();
+$TVA_Actuelle = 19.6/100;
+
+$Coût_Pot_De_Miel =  coutPotsMiel($qtéPotsDeMiel);
+$Coût_Produit_Derive = coutDerives ($qtéProduitsDérivés);
+
+$Total_HT_HL = $Coût_Pot_De_Miel + $Coût_Produit_Derive;
+
+echo "Commande :\n Pôts de miel : " . $Coût_Pot_De_Miel 
+        . "\n Produits dérivés : " . $Coût_Produit_Derive.
+        "\n soit un total de : " . $Total_HT_HL;
+
+$Frais_de_port = frais_De_Ports($Total_HT_HL);
+
+echo "\nFrais de port  : " . $Frais_de_port;
+$TVA = TVA($Total_HT_HL + $Frais_de_port, $TVA_Actuelle);
+echo "\nTVA : " . $TVA;
+
+$facture_TTC = round($TVA + $Frais_de_port + $Total_HT_HL,2);
+echo "\nFacture totale : " . $facture_TTC;
+
+
+function coutPotsMiel($qtéPotsDeMiel) {
+    $nbPotsDeMiel_Ristourne = 3;                
+    $prixHTPotDeMiel = 6;                       
+    $prixHTPotDeMiel_Ristourne = 5;             
+    $facture_Pots_De_Miel_HT = 0;
+    
+    switch (TRUE) {
+        
+        case ($qtéPotsDeMiel <= $nbPotsDeMiel_Ristourne) :
+            $facture_Pots_De_Miel_HT = ($qtéPotsDeMiel * $prixHTPotDeMiel);
+            break;
+        case ($qtéPotsDeMiel > $nbPotsDeMiel_Ristourne) :
+            $facture_Pots_De_Miel_HT = ($nbPotsDeMiel_Ristourne * $prixHTPotDeMiel) 
+                + (($qtéPotsDeMiel - $nbPotsDeMiel_Ristourne) * $prixHTPotDeMiel_Ristourne);
+            break;
+    }
+    return $facture_Pots_De_Miel_HT;
+}
+
+function coutDerives($qtéProduitsDérivés) {
+    $nbProduitDérivé_Ristourne = 5;
+    $prixHTProduitDérivé = 4;
+    $RistourneProduitDérivé = 0.2;
+    switch (TRUE) {
+        case ($qtéProduitsDérivés <= $nbProduitDérivé_Ristourne) :
+            $facture_Produit_Derive_HT = ($qtéProduitsDérivés * $prixHTProduitDérivé);
+            break;
+        case ($qtéProduitsDérivés > $nbProduitDérivé_Ristourne) :
+            $facture_Produit_Derive_HT = ($nbProduitDérivé_Ristourne * $prixHTProduitDérivé) + ($qtéProduitsDérivés - $nbProduitDérivé_Ristourne) * ($prixHTProduitDérivé - ($prixHTProduitDérivé * $RistourneProduitDérivé));
+    }
+    return $facture_Produit_Derive_HT;
+}
+
+function frais_De_Ports($Montant_HT) {
+    $fraisDePorts = 0.08; /* du montant HT */ $minfraisDePorts = 4;
+    switch (TRUE) {
+        case (($fraisDePorts * $Montant_HT) > $minfraisDePorts) :
+            $frais_de_Port = ($fraisDePorts * $Montant_HT);
+            break;
+        case (($fraisDePorts * $Montant_HT) < $minfraisDePorts) :
+            $frais_de_Port = $minfraisDePorts;
+            break;
+    }
+    //echo "\nFrais de port : " . $frais_de_Port;
+    return $frais_de_Port;
+}
+
+function TVA($Montant_HT, $TVA) {
+    $montant_TVA = ($Montant_HT * $TVA);
+    //echo "TVA : " . $montant_TVA . "\n";
+    return $montant_TVA;
+}
+/*SANS ROUND (arrondi)
+ "C:\xampp\php\php.exe" "C:\Users\uSio\Desktop\tp_PHP\tp_1\Exos\31p33 Apiculture_facturation_Colis_Fonctions_coutPotsMiel_et_CoutDerive.php"
+nombre de pots de miel : 
+6
+nombre de produits dérivés : 
+8
+Commande :
+ Pôts de miel : 33
+ Produits dérivés : 29.6
+ soit un total de : 62.6
+Frais de port  : 5.008
+TVA : 13.251168
+Facture totale : 80.859168
+Done.
+
+Avec ROUND (arrondi)
+"C:\xampp\php\php.exe" "C:\Users\uSio\Desktop\tp_PHP\tp_1\Exos\31p33 Apiculture_facturation_Colis_Fonctions_coutPotsMiel_et_CoutDerive.php"
+nombre de pots de miel : 
+6
+nombre de produits dérivés : 
+8
+Commande :
+ Pôts de miel : 33
+ Produits dérivés : 29.6
+ soit un total de : 62.6
+Frais de port  : 5.008
+TVA : 13.251168
+Facture totale : 80.86
+Done.
+*/
+?>
