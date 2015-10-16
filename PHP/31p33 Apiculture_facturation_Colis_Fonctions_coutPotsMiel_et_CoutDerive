@@ -3,29 +3,6 @@
 require_once '..\\Lib\U.php';
 
 
-echo "nombre de pots de miel : \n";
-$qtéPotsDeMiel = lireClavier();
-echo "nombre de produits dérivés : \n";
-$qtéProduitsDérivés = lireClavier();
-$TVA_Actuelle = 19.6/100;
-
-$Coût_Pot_De_Miel =  coutPotsMiel($qtéPotsDeMiel);
-$Coût_Produit_Derive = coutDerives ($qtéProduitsDérivés);
-
-$Total_HT_HL = $Coût_Pot_De_Miel + $Coût_Produit_Derive;
-
-echo "Commande :\n Pôts de miel : " . $Coût_Pot_De_Miel 
-        . "\n Produits dérivés : " . $Coût_Produit_Derive.
-        "\n soit un total de : " . $Total_HT_HL;
-
-$Frais_de_port = frais_De_Ports($Total_HT_HL);
-
-echo "\nFrais de port  : " . $Frais_de_port;
-$TVA = TVA($Total_HT_HL + $Frais_de_port, $TVA_Actuelle);
-echo "\nTVA : " . $TVA;
-
-$facture_TTC = round($TVA + $Frais_de_port + $Total_HT_HL,2);
-echo "\nFacture totale : " . $facture_TTC;
 
 
 function coutPotsMiel($qtéPotsDeMiel) {
@@ -80,6 +57,33 @@ function TVA($Montant_HT, $TVA) {
     //echo "TVA : " . $montant_TVA . "\n";
     return $montant_TVA;
 }
+
+echo "nombre de pots de miel : \n";
+$qtéPotsDeMiel = lireClavier();
+echo "nombre de produits dérivés : \n";
+$qtéProduitsDérivés = lireClavier();
+$TVA_Actuelle = 19.6/100;
+
+$Coût_Pot_De_Miel =  coutPotsMiel($qtéPotsDeMiel);
+$Coût_Produit_Derive = coutDerives ($qtéProduitsDérivés);
+
+$Total_HT_HL = $Coût_Pot_De_Miel + $Coût_Produit_Derive;
+
+echo "Commande :\n Pôts de miel : " . $Coût_Pot_De_Miel 
+        . "\n Produits dérivés : " . $Coût_Produit_Derive.
+        "\n soit un total de : " . $Total_HT_HL;
+
+$Frais_de_port = frais_De_Ports($Total_HT_HL);
+
+echo "\nFrais de port  : " . $Frais_de_port;
+$TVA = TVA($Total_HT_HL + $Frais_de_port, $TVA_Actuelle);
+echo "\nTVA : " . $TVA;
+
+$facture_TTC = round($TVA + $Frais_de_port + $Total_HT_HL,2);
+echo "\nFacture totale : " . $facture_TTC;
+
+
+//Exemple de résultat
 /*SANS ROUND (arrondi)
  "C:\xampp\php\php.exe" "C:\Users\uSio\Desktop\tp_PHP\tp_1\Exos\31p33 Apiculture_facturation_Colis_Fonctions_coutPotsMiel_et_CoutDerive.php"
 nombre de pots de miel : 
