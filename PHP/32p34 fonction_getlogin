@@ -1,0 +1,31 @@
+<?php
+
+/******************************************************************************/
+/*string getlogin ( string $str1, string $str2)                               */
+/*                                             ______________________________ */
+/*                                            | /    ###                *    |*/
+/*By : nicoolasens@gmail.com                  |E    #               ******** |*/
+/*                                            |    #    #+             ***   |*/
+/*                                            |     #    ##           *   *  |*/
+/*Retourne un string concaténé avec :         |      ####  # ___             |*/
+/* $str1[0] et $str2[0 à 3]                   |         #+#/                 |*/
+/* Le tout en minuscule                       |         #  \_                |*/
+/*                                            |            /                 |*/
+/* exemple :                                  |            \_____            |*/
+/*<?php                                       |               |              |*/
+/*echo getlogin("Nicolas", "Rela");           |     *         |  #           |*/
+/*//affiche "nrela"                           |  *******      | / \          |*/
+/*                                            |    ***         /+++\         |*/
+/*                                            |___*___*_______/____ \________|*/
+/*                                                                            */
+/******************************************************************************/
+
+function getlogin($str1, $str2) {
+    $lStr2 = strlen($str2);
+    $login = '';
+    $login = $str1[0] . $str2[0] . $str2[1] 
+            . (($lStr2 < 3) ? chr(rand(33, 126)) : $str2[2]) 
+            . (($lStr2 < 4) ? chr(rand(33, 126)): $str2[3]);
+    return strtolower($login);
+}
+?>
