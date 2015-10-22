@@ -1,0 +1,7 @@
+<?php
+
+require_once './32p34 fonction_getlogin.php';
+
+echo getlogin("Nicolas", "Ch");
+
+?>
