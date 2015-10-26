@@ -1,0 +1,93 @@
+<?php
+
+/******************************************************************************/
+/*string getlogin ( string $str1, string $str2)                               */
+/*                                             ______________________________ */
+/*                                            | /    ###                *    |*/
+/*By : nicoolasens@gmail.com                  |E    #               ******** |*/
+/*                                            |    #    #+             ***   |*/
+/*                                            |     #    ##           *   *  |*/
+/*Retourne un string concaténé avec :         |      ####  # ___             |*/
+/* $str1[0] et $str2[0 à 3]                   |         #+#/                 |*/
+/* Le tout en minuscule                       |         #  \_                |*/
+/*                                            |            /                 |*/
+/* exemple :                                  |            \_____            |*/
+/*<?php                                       |               |              |*/
+/*echo getlogin("Nicolas", "Rela");           |     *         |  #           |*/
+/*//affiche "nrela"                           |  *******      | / \          |*/
+/*                                            |    ***         /+++\         |*/
+/*                                            |___*___*_______/____ \________|*/
+/*                                                                            */
+/******************************************************************************/
+require_once '../Lib/strlib.php';
+//fonction qui distingue les espaces des lettres
+function caractere_different_espace($car) {
+    if (ord($car) == 32) {
+        $espace = TRUE;
+    } else {
+        $espace = FALSE;
+    }
+    return $espace;
+}
+
+//fonction qui vérifie si un caractère est valide.
+function caractere_valide($car) {
+    if ((ord($car) >= 65) && (ord($car) <= 90) || caractere_different_espace($car) ) {
+        $valide = TRUE;
+    } else {
+        $valide = FALSE;
+    }
+    return $valide;
+}
+
+//fonction qui retourne un code simplifié
+function code_simplifie($car) {
+    return ord ($car)-65;
+}
+
+//fonction qui décale la lettre
+function decalage($lettre, $nombre) {
+    $code_simplifie_de_lettre_decalee = ((code_simplifie($lettre)+ $nombre)%26);
+    $nouvelle_lettre = chr($code_simplifie_de_lettre_decalee +65);
+    return $nouvelle_lettre;
+}
+
+//codage de la phrase saisie et affichache de la phrase codee
+function codage($phrase_a_coder, $code_Cesar) {
+    // initialisation de la phrase codée
+    $phrase_codee = "";
+    $longueur_phrase_a_coder = strlen($phrase_a_coder);
+    for ($i = 0; $i < $longueur_phrase_a_coder; $i++) {
+        if (caractere_different_espace($phrase_a_coder[$i]) == FALSE) {
+            $phrase_codee = $phrase_codee . decalage($phrase_a_coder[$i], $code_Cesar);
+        } else {
+            $phrase_codee = $phrase_codee . $phrase_a_coder[$i];
+        }
+    }
+    return $phrase_codee;
+}
+
+//saisie de la chaine
+
+    $correct = FALSE;
+do {
+    echo "Saisir une phrase en lettres majuscules, sans accent ni ponctuation : ";
+    $phrase_a_coder = lireClavier();
+    $longueur_phrase_a_coder = strlen($phrase_a_coder);
+    $correct = TRUE;
+    for ($i = 0; $i < $longueur_phrase_a_coder; $i++) {
+        if (caractere_valide($phrase_a_coder[$i]) == FALSE) {
+            $correct =FALSE;
+        }
+    }
+        if ($correct == FALSE) {
+            echo "ERREUR DE SAISIE\n";
+        }
+}while ($correct == FALSE);
+
+//Saisie du code
+echo "Entrer le code (un entier non nul strictement compris entre -25 et 25) : " ;
+$code_Cesar = lireClavier();
+
+
+echo codage ($phrase_a_coder, $code_Cesar) . "\n";
