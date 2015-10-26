@@ -1,0 +1,60 @@
+<?php
+
+/******************************************************************************/
+/*string getlogin ( string $str1, string $str2)                               */
+/*                                             ______________________________ */
+/*                                            | /    ###                *    |*/
+/*By : nicoolasens@gmail.com                  |E    #               ******** |*/
+/*                                            |    #    #+             ***   |*/
+/*                                            |     #    ##           *   *  |*/
+/*Retourne un string concaténé avec :         |      ####  # ___             |*/
+/* $str1[0] et $str2[0 à 3]                   |         #+#/                 |*/
+/* Le tout en minuscule                       |         #  \_                |*/
+/*                                            |            /                 |*/
+/* exemple :                                  |            \_____            |*/
+/*<?php                                       |               |              |*/
+/*echo getlogin("Nicolas", "Rela");           |     *         |  #           |*/
+/*//affiche "nrela"                           |  *******      | / \          |*/
+/*                                            |    ***         /+++\         |*/
+/*                                            |___*___*_______/____ \________|*/
+/*                                                                            */
+/******************************************************************************/
+
+
+	$x = 0;
+$y = 1;
+$z = 1;
+$a = $x && $y || $z;
+$b = $x && $y OR $z;
+$c = $x AND $y || $z;
+$d = $x AND $y OR $z;
+$e = $x || $y && $z;
+$f = $x OR $y && $z;
+$g = $x || $y AND $z;
+$h = $x OR $y AND $z;
+
+
+echo "Pour x=0; y=1; z=1 : " . "\n"
+ . "a (&&||) =  " . $a . "\n"
+ . "b (&&OR) =  " . $b * 1 . "\n"
+ . "c (AND||) =  " . $c . "\n"
+ . "d (ANDOR) =  " . $d . "\n"
+ . $e . "=x || y && z" . "\n"
+ . $f . "=x OR y && z" . "\n"
+ . $g . "=x || y AND z" . "\n"
+ . $h . "=x OR y AND  z" . "\n";
+
+/*"C:\xampp\php\php.exe" "C:\Users\uSio\Desktop\tp_PHP\tp_1\Exos\brouillon.php"
+Pour x=0; y=1; z=1 : 
+a (&&||) =  1
+b (&&OR) =  0
+c (AND||) =  0
+d (ANDOR) =  0
+1=x || y && z
+0=x OR y && z
+1=x || y AND z
+0=x OR y AND  z
+Done.
+ */
+
+?>
