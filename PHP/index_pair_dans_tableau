@@ -1,0 +1,197 @@
+<?php
+
+/******************************************************************************/
+/* entier index_pair_dans_tableau (tableau d'entier)                          */
+/*Created : 29/10/2015 14:04:05 by Nicolas Churlet <nicoolasens@gmail.com>    */
+/*                                             ______________________________ */
+/*                                            | /    ###                *    |*/
+/*By : nicoolasens@gmail.com                  |E    #               ******** |*/
+/*                                            |    #    #+             ***   |*/
+/*                                            |     #    ##           *   *  |*/
+/*Retourne l'index du plus grand entier pair  |      ####  # ___             |*/
+/*d'un tableau d'entiers                      |         #+#/                 |*/
+/*                                            |         #  \_                |*/
+/*                                            |            /                 |*/
+/* exemple :                                  |            \_____            |*/
+/*<?                                          |               |              |*/
+/*                                            |     *         |  #           |*/
+/*//affiche                                   |  *******      | / \          |*/
+/*                                            |    ***         /+++\         |*/
+/*                                            |___*___*_______/____ \________|*/
+/*                                                                            */
+/*                                                                            */
+/******************************************************************************/
+
+/*function taille_tab($tab) {
+    $i = 0;
+    while ($tab[$i] != NULL) {
+        $i++;
+    }
+    return $i;
+}*/
+
+function existe_pair ($tab , $max) {
+    $i = 0;
+    $index = -2;
+    while (($i < $max) && ($index <= -1)) {
+        if( $tab[$i] %2 == 0){
+            $index = $i;
+        } else {
+            $index = -3;
+            $i++;
+        }
+    }
+    return $index;
+}
+
+function index_pair_dans_tableau ($tab) {
+    $max = count($tab);
+    $index = existe_pair ($tab , $max);
+    if ($index == -3) {
+        return $index;
+    } else {
+        for ($i = 0, $tampon = $tab[$index]; $i < $max; $i++) {
+            if (($tab[$i] >= $tampon) && ($tab[$i]%2 == 0)) {
+                $index = $i;
+                $tampon = $tab[$i];
+            }
+        }
+    }
+    return $index;
+}
+
+
+$tab = array(1,-2,3,-0,-4,-6,-0);
+
+echo index_pair_dans_tableau ($tab);
+echo strtoupper("il ne fallait pas mettre != mais <=");
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+/*function taille_tab($tab) {
+    $dernier = 0;
+    $i = 0;
+    while ($tab[$i] != NULL) {
+        $i++;
+    }
+    $dernier = $i;
+    return $dernier;
+}
+
+function existe_pair ($tab , $max) {
+    $i = 0;
+    $index = -2;
+    while (($i < $max) && ($index != -1)) {
+        if( tab[$i] %2 == 0){
+            $index = $i;
+        } else {
+            $index = -3;
+        }
+    }
+    return $index;
+}
+
+function index_pair_dans_tableau ($tab) {
+    $max = taille_tab($tab);
+    $index = existe_pair ($tab , $max);
+    if ($index == -3) {
+        return $index;
+    } else {
+        for ($i = 0, $tampon = $tab[$index]; $i < $max; $i++) {
+            if (($tab[$i] >= $tampon) && ($tab[$i]%2 == 0)) {
+                $index = $i;
+                $tampon = $tab[$i];
+            }
+        }
+    }
+    return $index;
+}
+
+
+$tab = array(1,2,3,0,4,-6,0);
+
+echo index_pair_dans_tableau ($tab);
+ * "C:\xampp\php\php.exe" "C:\Users\uSio\Desktop\tp_PHP\tp_1\index_pair_dans_tableau.php"
+
+Parse error: syntax error, unexpected '[' in C:\Users\uSio\Desktop\tp_PHP\tp_1\index_pair_dans_tableau.php on line 39
+
+Done.
+ * 
+ * function taille_tab($tab) {
+    $dernier = 0;
+    $i = 0;
+    while ($tab[$i] != NULL) {
+        $i++;
+    }
+    $dernier = $i;
+    return $dernier;
+}
+
+function existe_pair ($tab , $max) {
+    $i = 0;
+    $index = -2;
+    while (($i < $max) && ($index != -1)) {
+        if( $tab[$i] %2 == 0){ ///J'AVAIS OUBLIER LE $
+            $index = $i;
+        } else {
+            $index = -3;
+        }
+    }
+    return $index;
+}
+
+function index_pair_dans_tableau ($tab) {
+    $max = taille_tab($tab);
+    $index = existe_pair ($tab , $max);
+    if ($index == -3) {
+        return $index;
+    } else {
+        for ($i = 0, $tampon = $tab[$index]; $i < $max; $i++) {
+            if (($tab[$i] >= $tampon) && ($tab[$i]%2 == 0)) {
+                $index = $i;
+                $tampon = $tab[$i];
+            }
+        }
+    }
+    return $index;
+}
+ * "C:\xampp\php\php.exe" "C:\Users\uSio\Desktop\tp_PHP\tp_1\Exos\index_pair_dans_tableau.php"
+6
+ * Tourne en boucle. 
+ * function existe_pair ($tab , $max) {
+    $i = 0;
+    $index = -2;
+    while (($i < $max) && ($index <= -1)) {IL NE FALLAIT PAS METTRE != MAIS <=
+        if( $tab[$i] %2 == 0){
+            $index = $i;
+        } else {
+            $index = -3;
+            $i++;
+        }
+    }
+    return $index;
+}
+
+function index_pair_dans_tableau ($tab) {
+    $max = count($tab);
+    $index = existe_pair ($tab , $max);
+    if ($index == -3) {
+        return $index;
+    } else {
+        for ($i = 0, $tampon = $tab[$index]; $i < $max; $i++) {
+            if (($tab[$i] >= $tampon) && ($tab[$i]%2 == 0)) {
+                $index = $i;
+                $tampon = $tab[$i];
+            }
+        }
+    }
+    return $index;
+}
+
+
+$tab = array(1,2,3,0,4,-6,0);
+
+echo index_pair_dans_tableau ($tab);
+ * "C:\xampp\php\php.exe" "C:\Users\uSio\Desktop\tp_PHP\tp_1\Exos\index_pair_dans_tableau.php"
+4
+Done.
+ */
