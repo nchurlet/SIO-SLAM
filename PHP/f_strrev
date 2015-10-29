@@ -1,0 +1,65 @@
+<?php
+
+/******************************************************************************/
+/* str   f_strrev (strin)                                                     */
+/*Created : 29/10/2015 10:54:25 by Nicolas Churlet <nicoolasens@gmail.com>    */
+/*                                             ______________________________ */
+/*                                            | /    ###                *    |*/
+/*By : nicoolasens@gmail.com                  |E    #               ******** |*/
+/*                                            |    #    #+             ***   |*/
+/*                                            |     #    ##           *   *  |*/
+/*Retourne la chaine inversée                 |      ####  # ___             |*/
+/*                                            |         #+#/                 |*/
+/*                                            |         #  \_                |*/
+/*                                            |            /                 |*/
+/* exemple :                                  |            \_____            |*/
+/*<?                                          |               |              |*/
+/*  echo f_strrev ("bonjour");                |     *         |  #           |*/
+/*//affiche                                   |  *******      | / \          |*/
+/* ruojnob                                    |    ***         /+++\         |*/
+/*                                            |___*___*_______/____ \________|*/
+/*                                                                            */
+/*                                                                            */
+/******************************************************************************/
+
+function f_strrev ($ch) {
+    
+    for ($i = 0,$res = "", $len = strlen($ch)-1 ; $i <= $len; $i++) {
+        $res = $res . $ch[$len - $i];
+    }
+    return $res;
+}
+
+echo f_strrev("Bonjour");
+/*
+ * function f_strrev ($ch) {
+    $res = "";
+    $len = strlen($ch);
+    for ($i = 0; $i <= $len; $i++) {
+        $res = $res . $ch[$len - $i];
+    }
+    return $res;
+}
+
+echo f_strrev("Bonjour");
+Notice: Uninitialized string offset: 7 in C:\Users\uSio\Desktop\tp_PHP\tp_1\Exos\f_strrev.php on line 29
+
+Call Stack:
+    0.1130     124928   1. {main}() C:\Users\uSio\Desktop\tp_PHP\tp_1\Exos\f_strrev.php:0
+    2.9522     125256   2. f_strrev(???) C:\Users\uSio\Desktop\tp_PHP\tp_1\Exos\f_strrev.php:34
+ * Solution
+ function f_strrev ($ch) {
+    
+    for ($i = 0,$res = "", $len = strlen($ch)-1 ; $i <= $len; $i++) {
+        $res = $res . $ch[$len - $i];
+    }
+    return $res;
+}
+
+echo f_strrev("Bonjour");
+ * 
+ * "C:\xampp\php\php.exe" "C:\Users\uSio\Desktop\tp_PHP\tp_1\Exos\f_strrev.php"
+ruojnoB
+Done.
+//le $len était utilisé dans la boucle, notamment dans le parcours de la chaîne. Il semblerait que ce soit le problème.
+ */
