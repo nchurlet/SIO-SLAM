@@ -1,0 +1,34 @@
+<?php
+
+/******************************************************************************/
+/* type   39 Saisie_entre_1_31 ()                                                          */
+/*Created : 30/10/2015 15:30:52 by Nicolas Churlet <nicoolasens@gmail.com>    */
+/*                                             ______________________________ */
+/*                                            | /    ###                *    |*/
+/*By : nicoolasens@gmail.com                  |E    #               ******** |*/
+/*                                            |    #    #+             ***   |*/
+/*                                            |     #    ##           *   *  |*/
+/*Retourne                                    |      ####  # ___             |*/
+/*                                            |         #+#/                 |*/
+/*                                            |         #  \_                |*/
+/*                                            |            /                 |*/
+/* exemple :                                  |            \_____            |*/
+/*<?                                          |               |              |*/
+/*                                            |     *         |  #           |*/
+/*//affiche                                   |  *******      | / \          |*/
+/*                                            |    ***         /+++\         |*/
+/*                                            |___*___*_______/____ \________|*/
+/*                                                                            */
+/*                                                                            */
+/******************************************************************************/
+
+require_once '../Lib/strlib.php';
+
+echo "Saisir un entier entre  inférieur ou égal à 31\n";
+
+$nombre = lireClavier();
+while (!(($nombre <= 31 )&&($nombre >= 1))) {
+    echo $nombre
+    . "\n ERREUR de saisie : entrez un nombre inférieur ou égal à 31\n";
+    $nombre = lireClavier();
+}
