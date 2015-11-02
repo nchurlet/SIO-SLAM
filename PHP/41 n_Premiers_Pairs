@@ -1,0 +1,53 @@
+<?php
+
+/******************************************************************************/
+/* type   41 n_Premiers_Pairs ()                                                          */
+/*Created : 30/10/2015 15:41:35 by Nicolas Churlet <nicoolasens@gmail.com>    */
+/*                                             ______________________________ */
+/*                                            | /    ###                *    |*/
+/*By : nicoolasens@gmail.com                  |E    #               ******** |*/
+/*                                            |    #    #+             ***   |*/
+/*                                            |     #    ##           *   *  |*/
+/*Retourne                                    |      ####  # ___             |*/
+/*                                            |         #+#/                 |*/
+/*                                            |         #  \_                |*/
+/*                                            |            /                 |*/
+/* exemple :                                  |            \_____            |*/
+/*<?                                          |               |              |*/
+/*                                            |     *         |  #           |*/
+/*//affiche                                   |  *******      | / \          |*/
+/*                                            |    ***         /+++\         |*/
+/*                                            |___*___*_______/____ \________|*/
+/*                                                                            */
+/*                                                                            */
+/******************************************************************************/
+
+require_once '../Lib/strlib.php';
+
+echo "Saisir le nombre des premiers nombres pairs que vous voulez afficher\n";
+$n = lireClavier();
+echo "Saisir les nombre, appuyer sur ENTREE à chaque nombre saisi puis saisir 0 "
+. "puis ENTREE pour finir\n";
+$nombre = lireClavier();
+$nombre = $nombre . ", ";
+$somme = "";
+while ($nombre != 0) {
+    if ($nombre % 2 == 0) {
+    $somme = $somme . $nombre;
+    }
+    echo "+ (arrêtez en entrant  0)\n";
+    $nombre = lireClavier();
+    $nombre = $nombre . ", ";
+}
+
+if (n == 1) {
+    echo "Le premier nombre pair saisi est :\n";
+} else {
+echo "Les " . $n . " premiers nombres pairs saisis sont :\n";
+}
+if ($somme == "") {
+    echo "Aucun";
+} else {
+    $long = ($n *3) -2; 
+    echo substr($somme, 0, $long);
+}
