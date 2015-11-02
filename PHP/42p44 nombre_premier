@@ -1,0 +1,37 @@
+<?php
+
+/******************************************************************************/
+/* Booléen nombre_premier (entier)                                            */
+/*Created : 2/11/2015 09:34:40 by Nicolas Churlet <nicoolasens@gmail.com>     */
+/*                                             ______________________________ */
+/*                                            | /    ###                *    |*/
+/*By : nicoolasens@gmail.com                  |E    #               ******** |*/
+/*                                            |    #    #+             ***   |*/
+/*                                            |     #    ##           *   *  |*/
+/*Retourne                                    |      ####  # ___             |*/
+/*                                            |         #+#/                 |*/
+/*                                            |         #  \_                |*/
+/*                                            |            /                 |*/
+/* exemple :                                  |            \_____            |*/
+/*<?                                          |               |              |*/
+/*                                            |     *         |  #           |*/
+/*//affiche                                   |  *******      | / \          |*/
+/*                                            |    ***         /+++\         |*/
+/*                                            |___*___*_______/____ \________|*/
+/*                                                                            */
+/*                                                                            */
+/******************************************************************************/
+
+function bool_premier ($x) {
+    $boolpair = FALSE;
+    for ($i = 2, $nbDiviseurs = 0; $i <= $x; $i++) {
+        if ($x % $i == 0) {
+            $nbDiviseurs++;
+        }
+    }
+    if ($nbDiviseurs == 1) {
+        $boolpair = TRUE;
+    }
+    return $boolpair;
+}
+echo bool_premier (8)*1;
