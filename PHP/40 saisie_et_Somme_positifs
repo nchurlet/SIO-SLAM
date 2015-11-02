@@ -1,0 +1,35 @@
+<?php
+
+/******************************************************************************/
+/* type   40 saisie_et_Somme_positifs ()                                                          */
+/*Created : 30/10/2015 15:34:17 by Nicolas Churlet <nicoolasens@gmail.com>    */
+/*                                             ______________________________ */
+/*                                            | /    ###                *    |*/
+/*By : nicoolasens@gmail.com                  |E    #               ******** |*/
+/*                                            |    #    #+             ***   |*/
+/*                                            |     #    ##           *   *  |*/
+/*Retourne                                    |      ####  # ___             |*/
+/*                                            |         #+#/                 |*/
+/*                                            |         #  \_                |*/
+/*                                            |            /                 |*/
+/* exemple :                                  |            \_____            |*/
+/*<?                                          |               |              |*/
+/*                                            |     *         |  #           |*/
+/*//affiche                                   |  *******      | / \          |*/
+/*                                            |    ***         /+++\         |*/
+/*                                            |___*___*_______/____ \________|*/
+/*                                                                            */
+/*                                                                            */
+/******************************************************************************/
+
+require_once '../Lib/strlib.php';
+
+echo "Saisir des nombres positifs à additionner\n";
+$somme = 0;
+$nombre = lireClavier();
+while ($nombre > 0) {
+    $somme = $somme + $nombre;
+    echo "+ (arrêtez en entrant  0)\n";
+    $nombre = lireClavier();
+}
+echo "La somme de tous ces nombre fait :\n" . $somme;
