@@ -1,25 +1,25 @@
 <?php
 function changer_index(&$tableau, $index, $nouvelle_Clé) {
-    $changé = FALSE;
+    $change = FALSE;
+    $tampon = 0;
     foreach ($tableau as $key => $value) {
-        switch ($changé) {
+        switch ($change) {
             case FALSE :
                 if ($key == $index) {
                     $tableau[$nouvelle_Clé] = $tableau[$index];
                     unset($tableau[$index]);
-                    $changé = TRUE;
+                    $change = TRUE;
                 }
                 break;
 
             case TRUE :
                 
                 if ($key != $nouvelle_Clé){
-                    $tableau[$index] = $tableau[$key];
+                    $tampon = $tableau[$key];
                     unset($tableau[$key]);
-                    $tableau[$key] = $tableau[$index];
-                    unset($tableau[$index]);
+                    $tableau[$key] = $tampon;
                     break;
-                }else {$changé = FALSE;}
+                }else {$change = FALSE;}
         }
     }
 }
