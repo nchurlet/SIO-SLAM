@@ -1,0 +1,67 @@
+<?php
+function changer_index(&$tableau, $index, $nouvelle_Clé) {
+    $changé = FALSE;
+    foreach ($tableau as $key => $value) {
+        switch ($changé) {
+            case FALSE :
+                if ($key == $index) {
+                    $tableau[$nouvelle_Clé] = $tableau[$index];
+                    unset($tableau[$index]);
+                    $changé = TRUE;
+                }
+                break;
+
+            case TRUE :
+                
+                if ($key != $nouvelle_Clé){
+                $tableau[$index] = $tableau[$key];
+                unset($tableau[$key]);
+                $tableau[$key] = $tableau[$index];
+                unset($tableau[$index]);
+                break;
+                }else {$changé = FALSE;}
+        }
+    }
+}
+
+$tableau = array(1, 2 , 3, 4,5, 6, 7, 8, 9, 10);
+$res = print_r($tableau, TRUE);
+$longueur = strlen($res) -1;
+echo "Le Tableau est :\n" . substr($res, 8, $longueur) . "\n" ;
+
+changer_index ($tableau, 2, 'numéro 2');
+$res = print_r($tableau, TRUE);
+$longueur = strlen($res) -10;
+echo "Le Tableau est dont l'index 2 a été changé par \"numero 2\" est :\n" . substr($res, 8, $longueur) . "\n" ;
+
+/*
+Résultat : 
+"C:\xampp\php\php.exe" "C:\Users\uSio\Desktop\tp_PHP\tp_1\Exos\brouillon.php"
+Le Tableau est :
+    [0] => 1
+    [1] => 2
+    [2] => 3
+    [3] => 4
+    [4] => 5
+    [5] => 6
+    [6] => 7
+    [7] => 8
+    [8] => 9
+    [9] => 10
+)
+
+Le Tableau est dont l'index 2 a été changé par "numero 2" est :
+    [0] => 1
+    [1] => 2
+    [numéro 2] => 3
+    [3] => 4
+    [4] => 5
+    [5] => 6
+    [6] => 7
+    [7] => 8
+    [8] => 9
+    [9] => 10
+
+Done.
+
+*/
