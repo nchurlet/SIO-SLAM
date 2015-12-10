@@ -1,0 +1,33 @@
+Option Explicit
+Dim Title,ws,Command,Exec,FileExe,param1,onglet,appPath,strTextFile
+Dim objFSO, strData,arrLines,strLine
+
+CONST ForReading =1 
+
+
+
+'variable de la fonction
+appPath = "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
+FileExe =  chr(34) & appPath  & chr(34)
+
+'variables de la boucle
+strTextFile = "C:\Users\uSio\Desktop\tab.txt"
+Set objFSO = CreateObject("Scripting.FileSystemObject")
+strData = objFSO.OpenTextFile(strTextFile,ForReading).ReadAll
+arrLines = Split(strData,vbCrLf)
+
+For Each strLine in arrLines
+  onglet = objFSO.OpenTextFile(strTextFile,ForReading).ReadAll
+next
+
+RunMe FileExe,onglet
+  
+ Function RunMe(FileExe,onglet)
+    Dim Title,ws,Command,Exec
+    Title = "Running Chrome.exe from vbscript and passing parameters "
+    Set ws = CreateObject("wscript.Shell")
+    command =  FileExe &" "& onglet&" "
+    Msgbox command,64,Title
+	ws.run command,0,True
+	
+End Function
