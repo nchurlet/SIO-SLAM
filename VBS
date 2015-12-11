@@ -11,7 +11,7 @@ appPath = "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
 FileExe =  chr(34) & appPath  & chr(34)
 
 'variables de la boucle
-strTextFile = "C:\Users\uSio\Desktop\tab.txt"
+strTextFile = "C:\Users\uSio\Desktop\ListeDeLiens.txt"
 Set objFSO = CreateObject("Scripting.FileSystemObject")
 strData = objFSO.OpenTextFile(strTextFile,ForReading).ReadAll
 arrLines = Split(strData,vbCrLf)
