@@ -1,0 +1,56 @@
+/*
+Ce programme fonctionne une fois sauvegardé, cependant une erreur 
+"java.lang.ArrayIndexOutOfBoundsException: 0" apparait en cours de programmation
+si l'on n'a pas sauvegardé. Mieux : Run le projet et non seulement le fichier
+To avoid "java.lang.ArrayIndexOutOfBoundsException: 0" Run from project
+
+Particularity :
+Avoid if{}else{} using 1/0 * mathematics
+
+
+Objectif : Calculer un forfait de location de voiture. 
+
+Forfait : 50e
+Majoration : 10% au-delà de 10 chevaux
+Prix au km : 0.1
+ */
+package locationvoiture;
+
+/**
+ *
+ * @author Nicolas Churlet <nicoolasens@gmail.com>
+ */
+public class LocationVoiture {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static int FORFAIT = 50;
+    public static float MAJORATION = (float) 0.1;
+    public static double PX_KM = 0.10;
+    public static double prix;
+    
+    
+    public static void main(String[] args) {
+        // TODO code application logic here
+        
+    //Variable(s) 
+    int myBool = (Integer.parseInt(args[0]) > 10) ? 1 : 0; //Condition ch
+    
+    //Test
+    System.out.println("Test ch " +args[0]);//Error for casual run (maj+F6), but   
+    System.out.println("Test km " +args[1]);//works for Profile Project 
+    System.out.println("Test bool "+myBool);//(alt+F12). Needs to be saved or
+                                            // run from project.
+
+    //Programme :
+    LocationVoiture.prix = 
+        FORFAIT 
+        + myBool * MAJORATION * FORFAIT  //Usefull to spare if{}else{}
+        + Double.parseDouble(args[1]) * PX_KM;
+
+    //Affichage / Display
+        System.out.println(prix);
+    }
+    
+}
