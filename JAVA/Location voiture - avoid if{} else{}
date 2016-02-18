@@ -54,3 +54,11 @@ public class LocationVoiture {
     }
     
 }
+
+/*run:
+**Test ch 20
+**Test km 1000
+**Test bool 1
+**155.0
+**BUILD SUCCESSFUL (total time: 0 seconds)
+*/
