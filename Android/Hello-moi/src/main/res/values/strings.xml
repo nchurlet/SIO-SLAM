@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Hello moi</string>
+    <string name="action_settings">Settings</string>
+    <string name="prenomHint">Tapez votre prénom.</string>
+    <string name="prenom">Entrez votre prenom :</string>
+</resources>

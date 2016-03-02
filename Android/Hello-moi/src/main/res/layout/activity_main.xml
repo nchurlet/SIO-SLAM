@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:baselineAligned="false"
+    android:background="#ffffff"
+    android:nestedScrollingEnabled="false">
+    <!--Le LinearLayout (LL) est un parent. Il va contenir les enfants.
+
+    On voit que sa hauteur est définie à fill_parent. Étant le premier LL c'est normal. Il devra
+    contenir tout le reste.
+
+    baslineAligned sert à faire gagner en performance. Il parait qu'il
+    permet aussi de gagner en performance. (mais je ne suis pas convaincu
+    S'il est true, il permet l'alignement des composants sur une même ligne.
+    -->
+
+    <TextView android:id="@+id/TextViewPrenom"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/prenom"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Voici un autre texte aligné verticalement"
+        />
+    <!--TextView est un enfant, il est contenu dans un Parent, le linearLayout
+    certaines de ses propriétés comme android:layout_width sont définies
+    en fonction de ses parent.
+    wrap_content signifie que l'élément prendra la place nécessaire, sans plus
+     -->
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+        <EditText android:id="@+id/EditTextPrenom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/prenomHint"
+            android:background="#cccccc"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Prénom"
+            android:layout_gravity="center" />
+
+        <Button android:id="@+id/ButtonEnvoyer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bouton"
+            />
+    </LinearLayout>
+
+
+
+    <TextView android:id="@+id/TextViewHello"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/dimMessage"
+        android:textColor="@color/couleurMessage"
+        />
+
+</LinearLayout>
