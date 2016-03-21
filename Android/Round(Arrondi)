@@ -1,0 +1,22 @@
+/*
+Sur Android, on peut avoir besoin de faire un arrondi.
+
+Les méthodes que l'on trouve sur internet font parfois intervenir des strings ou des
+calculs un peu alambiqués alors qu'il existe une méthode java.lang.Math.round() qui 
+suffit à faire le travail.
+
+Round, est une fonction qui existe en php, mais forcément, en java, tout est réécrit.
+Heureusement les mots sont ceux du dico anglais.
+
+Ainsi, si je veux faire un arrondi à la 2ème décimale, je vais d'abord faire un arrondi
+sur mon nombre mulitiplié par 100, puis le rediviser par 100. Attention, cela se fait 
+en 2 étapes, sinon votre nombre sera tronqué.
+*/
+
+float myValue = java.lang.Math.round(intent.getFloatExtra("poids", 7) * 3 *100);
+myValue = myValue/100; //On ne divise qu'ici.
+
+/*
+Nous avons donc un float (ici récupéré depuis une autre activité (intent) multipliée par 3
+puis le reste sert à obtenir un float à 2 décimales.
+*/
